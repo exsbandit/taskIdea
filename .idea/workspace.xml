@@ -16,64 +16,44 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b56af98-defa-4dd6-a397-24bdfd4fa351" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Helpers/Response.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/v1/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/v1/CustomerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/v1/OrderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/v1/ProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Discount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/OrderedDiscount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/OrderedProduct.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/RepositoryProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repositories/v1/Base/BaseRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repositories/v1/Base/RepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryIndexRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryShowRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryStoreRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryUpdateRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerIndexRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerShowRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerStoreRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerUpdateRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Order/OrderIndexRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Order/OrderShowRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Order/OrderStoreRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Order/OrderUpdateRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Product/ProductIndexRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Product/ProductShowRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Product/ProductStoreRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Requests/v1/Product/ProductUpdateRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/v1/Category/CategoryIndexResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/v1/Order/OrderDiscountResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/v1/Order/OrderProductResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/v1/Order/OrderWithDiscountResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/v1/Order/OrderWithProductResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Rules/v1/ProductStockRule.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Category/CategoryService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Category/Repositories/CategoryRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Category/Repositories/CategoryRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Customer/CustomerService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Customer/Repositories/CustomerRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Customer/Repositories/CustomerRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Discount/DiscountService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Discount/Repositories/DiscountRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Discount/Repositories/DiscountRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Order/Helpers/Discount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Order/OrderService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Order/Repositories/OrderRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Order/Repositories/OrderRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Product/ProductService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Product/Repositories/ProductRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/v1/Product/Repositories/ProductRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/v1/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/v1/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/v1/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/v1/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryIndexRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Category/CategoryIndexRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryShowRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Category/CategoryShowRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Category/CategoryStoreRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Category/CategoryUpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Category/CategoryUpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerIndexRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Customer/CustomerIndexRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerShowRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Customer/CustomerShowRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Customer/CustomerStoreRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Customer/CustomerUpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Customer/CustomerUpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Order/OrderIndexRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Order/OrderIndexRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Order/OrderShowRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Order/OrderShowRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Order/OrderStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Order/OrderStoreRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Order/OrderUpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Order/OrderUpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Product/ProductIndexRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Product/ProductIndexRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Product/ProductShowRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Product/ProductShowRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Product/ProductStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Product/ProductStoreRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Requests/v1/Product/ProductUpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/v1/Product/ProductUpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/v1/Category/CategoryIndexResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/v1/Category/CategoryIndexResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/v1/Order/OrderDiscountResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/v1/Order/OrderDiscountResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/v1/Order/OrderProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/v1/Order/OrderProductResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/v1/Order/OrderWithDiscountResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/v1/Order/OrderWithDiscountResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/v1/Order/OrderWithProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/v1/Order/OrderWithProductResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,20 +186,25 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\database" />
       <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\app" />
       <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\app\Providers" />
       <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\app\Http" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\app\Http" />
+      <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\app\Http\Controllers" />
+      <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\routes" />
+      <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\database" />
       <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\app\Models" />
-      <recent name="\\wsl$\Ubuntu\home\erdem\taskIdea\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -236,8 +221,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680535056958</updated>
-      <workItem from="1680535058094" duration="1888000" />
+      <workItem from="1680535058094" duration="4435000" />
     </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1680537227165</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680537227165</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,11 +241,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="820" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1680536741075">
@@ -263,13 +272,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="271" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1680536878336" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1680537243251">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1680537243251" />
     <state x="786" y="323" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1680536927150">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="786" y="323" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040@0.0.1920.1040" timestamp="1680536927150" />
-    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1680536070324">
+    <state x="898" y="223" width="585" height="534" key="find.popup" timestamp="1680538670506">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1680536070324" />
+    <state x="898" y="223" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1680538670506" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1680538649391">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1680538649391" />
   </component>
 </project>
