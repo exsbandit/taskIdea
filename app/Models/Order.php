@@ -13,7 +13,7 @@ class Order extends Model
 
     public function products(): HasMany
     {
-        return $this->hasMany(OrderedProduct::class, 'orderId', 'id');
+        return $this->hasMany(OrderedProduct::class, 'orderId', 'id')->with('product');
     }
 
     public function discounts(): HasMany

@@ -18,10 +18,12 @@ class CreateOrderedProductTable extends Migration
 
             $table->unsignedBigInteger('orderId');
             $table->foreign('orderId')->references('id')->on('orders');
-
             $table->unsignedBigInteger('productId');
             $table->foreign('productId')->references('id')->on('products');
-
+            $table->unsignedBigInteger('categoryId');
+            $table->foreign('categoryId')->references('id')->on('categories');
+            $table->unsignedBigInteger('customerId');
+            $table->foreign('customerId')->references('id')->on('customers');
             $table->integer('quantity');
             $table->decimal('unitPrice');
             $table->decimal('total');

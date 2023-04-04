@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="taskidea@localhost" uuid="a8e46221-aeec-4fc1-9b83-973cf03aa098">
+    <data-source source="LOCAL" name="taskidea@localhost" uuid="6be346eb-129b-47dd-b4c4-c792137ca44c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3310/taskidea</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/taskidea</jdbc-url>
     </data-source>
   </component>
 </project>

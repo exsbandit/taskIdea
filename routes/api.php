@@ -20,6 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('/discount')
+    ->controller(v1\DiscountController::class)
+    ->group(function () {
+        Route::get('/find/{order}', 'discountFinder');
+        Route::post('/', 'store');
+        Route::get('/', 'index');
+    });
+
 Route::prefix('/order')
     ->controller(v1\OrderController::class)
     ->group(function () {
