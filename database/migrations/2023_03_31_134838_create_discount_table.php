@@ -15,12 +15,28 @@ class CreateDiscountTable extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->comment('Discount description can be insert that column');
-            $table->integer('type')->comment('Discount only applied to products, categories and cart(total)');
-            $table->boolean('is_percentage')->comment('Discount must be unit or percentage');
-            $table->float('discount')->comment('Discount unit(%10, ');
-            $table->boolean('status');
+            $table->enum('type', ['order', 'customer', 'category', 'product'])->comment('
+                Order ise order ın total price ına uygulanır.
+                Customer ise order ın tamamına uygulanır.
+                Category ise order altındaki ilgili category nin totaline uygulanır
+                Product ise İlgili orderın altındaki product totaline uygulanır
+            ');
+            $table->string('selection')->nullable();
+            $table->string('description')->comment('Discount description');
+            $table->enum('control_unit', ['amount', 'quantity', 'none'])->default('none')->comment('
+                   Kıyas yapılacak durum
+                   Orn 1000 TL üzeri alışveriş, 6 üzeri ürün
+            ');
+            $table->enum('discount_unit', ['percentage', 'amount', 'quantity']);
+            $table->enum('rule', ['equal', 'upper', 'lower', 'none'])->default('none');
+            $table->string('controlTable')->nullable();
+            $table->string('controlColumn')->nullable();
+            $table->string('control')->nullable();
+            $table->integer('input')->nullable()->comment('indirim miktarı / adedi / yüzdesi');
+            $table->float('case')->nullable();
+            $table->boolean('status')->default(true);
+            $table->date('lastDate')->default(\Carbon\Carbon::now()->addYear()->toDateString());
+            $table->integer('remaining')->default(-1);
             $table->timestamps();
         });
     }
@@ -35,30 +51,3 @@ class CreateDiscountTable extends Migration
         Schema::dropIfExists('discounts');
     }
 }
-
-
-/*
-
-sepet mi adet mi = hayır / evet
-kategori mi = evet
-ürün mü = hayır
-yüzde mi = evet
-indirim miktarı = 20
-Status = active
-
-
-
-Hayır, Hayır, Hayır, Hayır, 100
-Ürün alımına 100 TL inidirim
-
-Hayır, Evet, Hayır, Evet, 100
-X nolu kategoriden alışverişşinize %Y indirim
-
-Hayır, Evet, Hayır, Evet, 100
-X nolu kategoriden alışverişşinize %Y indirim
-
-
-
-*/
-
-

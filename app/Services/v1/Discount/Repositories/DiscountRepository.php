@@ -31,85 +31,256 @@ class DiscountRepository extends BaseRepository implements DiscountRepositoryInt
             }
         }
 /*
-        {
-            "type":[
-            "customer",
-            "product"
-        ],
-            "selection": [1,3],
-            "desc": "hoşgeldin indirimi",
-            "unit": "price",
-            "rule": "lower",
-            "control": "2022-04-10",
-            "input": "20"
+      {
+            'type': 'customer',
+            'selection': '1' //customer id
+            'desc': 'hoşgeldin indirimi',
+            'unit': 'price', // percentage,
+            'rule': 'lower',
+            'control': '2022.04.10',
+            'input': '20',
         }
         */
 
 
-        $order = Order::find(1)->get();
+        $order = Order::where('id',1)->get();
 
-        dd($order);
-        dd(App::make('App/Model/Customer'));
-        dd(  $collection = new ('App\Model\Customer'));
-        dd($baseClass);
+        $this->discountFinder($attributes, $order);
+
+
         return $this->model::query()->create($attributes);
     }
 
-    public function discountFinder($attribute): array | bool
+    public function discountFinder($order): array|bool
     {
+        // Discount Controlleri Sırayla
+        // Product discountları kontrol edilir
+        // Category discountları kontrol edilir
+        // Customer discountları kontrol edilir
+        // Order discountları kontrol edilir
 
-
-        return match($attribute['mainKey']) {
-            'cart' => $this->checkCartDiscount($attribute),
-            'customer' => $this->checkCustomerDiscount($attribute),
-            'product' => $this->checkProductDiscount($attribute),
-            'category' => $this->checkCategoryDiscount($attribute),
+        $discounts = Discount::orderByRaw("FIELD(type , 'product', 'category', 'customer', 'order') ASC")->get();
+        $discountResult = [];
+        $totalDiscount = 0;
+        foreach ($discounts as $discount) {
+            $discountResult[] = match($discount['type']){
+            'cart' => $this->checkCartDiscount($discount, $order),
+            'customer' => $this->checkCustomerDiscount($discount, $order),
+            'product' => $this->checkProductDiscount($discount, $order),
+            'category' => $this->checkCategoryDiscount($discount, $order),
         };
+        }
+
+        $result = json_encode([
+            "orderId" => $order->id,
+            "discounts" => $discountResult,
+            "totalDiscount" => $totalDiscount,
+            "discountedTotal" => $order->total - $totalDiscount
+
+        ]);
+        return $result;
     }
 
-    public function checkCartDiscount($attribute)
+    /**
+     * Calculate the discount amount and subtotal based on cart rules.
+     *
+     * @param  array  $discount
+     * @param  \App\Models\Order  $order
+     * @return array|null
+     */
+    public function checkCartDiscount($discount, $order)
     {
-        /*
-            {
-                "type": "customer",
-                "selection": "1",
-                "desc": "hoşgeldin indirimi",
-                "unit": "price",
-                "rule": "lower",
-                "control": "2022-04-10",
-                "input": "20"
+        if ($discount['controlColumn'] !== 'total') {
+            return null;
+        }
+
+        $subtotal = $order->total;
+        $discountAmount = 0;
+
+        if ($discount['rule'] === 'lower' && $subtotal < $discount['sub_total']) {
+            return null;
+        } elseif ($discount['rule'] === 'upper' && $subtotal > $discount['sub_total']) {
+            $discountAmount = $subtotal * $discount['input'] / 100;
+        } else {
+            return null;
+        }
+
+        return [
+            'discountReason' => $discount['desc'],
+            'discountAmount' => $discountAmount,
+            'subtotal' => $subtotal - $discountAmount,
+        ];
+    }
+
+    /**
+     * Calculate the discount amount and subtotal based on customer rules.
+     *
+     * @param  array  $discount
+     * @param  \App\Models\Order  $order
+     * @return array|null
+     */
+    public function checkCustomerDiscount($discount, $order)
+    {
+        if ($discount['controlColumn'] !== 'customer_id') {
+            return null;
+        }
+
+        if ($order->customer_id != $discount['control']) {
+            return null;
+        }
+
+
+
+        $subtotal = $order->total;
+        $discountAmount = 0;
+
+        if ($discount['rule'] === 'lower' && $subtotal < $discount['sub_total']) {
+            return null;
+        } elseif ($discount['rule'] === 'upper' && $subtotal > $discount['sub_total']) {
+            $discountAmount = $subtotal * $discount['input'] / 100;
+        } else {
+            return null;
+        }
+
+        return [
+            'discountReason' => $discount['desc'],
+            'discountAmount' => $discountAmount,
+            'subtotal' => $subtotal - $discountAmount,
+        ];
+    }
+
+    public function checkProductDiscount($discount, $order)
+    {
+        if (!$this->controlSelection($discount, $order, 'productId')) {
+            return null;
+        }
+
+        if ($discount['control_unit'] == 'amount') {
+            $selectionIds = explode(',', $discount['selection']);
+            $totalPrice = 0;
+            foreach ($selectionIds as $id) {
+                $totalPrice += $order->products->find($id)->total;
             }
-        */
 
-       /* match($attribute['rule']){
-            'greater' => $cart->total >= $attribute['target'] ? ['total' => $cart->total * (100)] : $cart->total,
-            'unit' => function () use ($cart, $attribute) {
-                $productCount = $this->productCounter($attribute);
+            $caseStatus = $discount['case'] == 'upper' ?
+                $totalPrice > $discount['case'] : ($discount['case'] == 'lower' ?
+                $totalPrice < $discount['case'] :
+                $totalPrice == $discount['case']
+            );
 
-                $cart->items
-            },
-        };*/
+            if ($caseStatus) {
+                $this->calculateDiscount($discount, $order);
+            }
+        }
 
-        dd('wait');
-
-        return ['checkCartDiscount'=> true];
+        if ($discount['controlColumn'] == 'product_id') {
+            $products = collect($order->items)->where('productId', $discount['control']);
+            $totalProduct = $products->sum('quantity');
+            if ($totalProduct > 0) {
+                $discountAmount = $this->calculateDiscount($totalProduct, $discount['input'], $discount['unit'], $discount['rule']);
+                $total = $order->total - $discountAmount;
+                $result = [
+                    "discountReason" => $discount['desc'],
+                    "discountAmount" => $discountAmount,
+                    "subtotal" => $total
+                ];
+                $this->addToTotalDiscount($discountAmount);
+                return $result;
+            }
+        }
+        return null;
     }
 
-    public function checkCustomerDiscount($attribute)
+
+    public function checkCategoryDiscount($discount, $order)
     {
-        return ['checkCustomerDiscount'=> true];
+        if ($discount['controlColumn'] == 'category_id') {
+            $products = collect($order->items)->whereIn('categoryId', explode(',', $discount['control']));
+            $totalProduct = $products->sum('quantity');
+            if ($totalProduct > 0) {
+                $discountAmount = $this->calculateDiscount($totalProduct, $discount['input'], $discount['unit'], $discount['rule']);
+                $total = $order->total - $discountAmount;
+                $result = [
+                    "discountReason" => $discount['desc'],
+                    "discountAmount" => $discountAmount,
+                    "subtotal" => $total
+                ];
+                $this->addToTotalDiscount($discountAmount);
+                return $result;
+            }
+        }
+        return null;
     }
 
-    public function checkProductDiscount($attribute)
+    public function calculateDiscount($discount, $order, $productPrice = null)
     {
-        return ['checkProductDiscount'=> true];
+        if ($discount['discount_unit'] == 'percentage') {
+            $subtotal = $order->total * ($discount['input'] / 100);
+            return [
+                "discountReason" => $discount['desc'],
+                "discountAmount" => $order->total - $subtotal,
+                "subtotal" => $subtotal
+            ];
+        } else if ($discount['discount_unit'] == 'amount') {
+            $subtotal = $order->total - $discount['input'];
+            return [
+                "discountReason" => $discount['desc'],
+                "discountAmount" => $order->total - $subtotal,
+                "subtotal" => $subtotal
+            ];
+        } else if ($discount['discount_unit'] == 'quantity') {
+            $subtotal = $productPrice * $discount['input'];
+            return [
+                "discountReason" => $discount['desc'],
+                "discountAmount" => $order->total - $subtotal,
+                "subtotal" => $subtotal
+            ];
+        }
+
+        $discountAmount = 0;
+        if ($discount['discount_unit'] == 'percentage') {
+            $discountAmount = $discount['input'] * ($discount / 100);
+            if ($discount['rule'] == 'upper') {
+                if ($discountAmount > $discount) {
+                    $discountAmount = $discount;
+                }
+            } else {
+                if ($discountAmount < $discount) {
+                    $discountAmount = $discount;
+                }
+            }
+        } else {
+            $discountAmount = ($discount['rule'] / $discount) * $discount;
+        }
+
+        $result = [
+            "discountReason" => $discount['desc'],
+            "discountAmount" => $discountAmount,
+            "subtotal" => '$total'
+        ];
+        $this->addToTotalDiscount($discountAmount);
+        return $result;
     }
 
-    public function checkCategoryDiscount($attribute)
+    /**
+     * @param $discount
+     * @param $order
+     * @param $check
+     * @return bool
+     * Check parameters possibilities categoryId, productId
+     */
+    private function controlSelection($discount, $order, $check): bool
     {
-        return ['checkCategoryDiscount'=> true];
-    }
+        $orderControl = $order->products->pluck($check)->toArray();
+        $selectionIds = explode(',', $discount['selection']);
 
+        foreach ($selectionIds as $id) {
+            if (!in_array($id, $orderControl)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public function cartDiscount(Model $order, $attributes): Model
     {
@@ -119,42 +290,6 @@ class DiscountRepository extends BaseRepository implements DiscountRepositoryInt
     public function moreThanValue(Model $model, array $attributes): Model
     {
 
-    }
-
-    public function productCounter($order): int
-    {
-        $counter = 0;
-        foreach ($order->items as $item) {
-            $counter += $item->quantity;
-        }
-        return $counter;
-    }
-
-    protected function getCalculationValue($input)
-    {
-        preg_match('/([0-9.]+)$|([0-9]+)/', $input, $matches);
-
-        return $matches[0];
-    }
-
-    /**
-     * Determine if condition is percentage
-     *
-     * @param  string  $input
-     * @return boolean
-     */
-    protected function isPercentage($input)
-    {
-        return S::contains($input, '%');
-    }
-
-    protected function toModel($models){
-
-        $modelArr = [];
-        foreach ($models as $stringmodel) {
-            $modelArr[] = ucfirst(strtolower($stringmodel));
-        }
-        return $modelArr;
     }
 
 }

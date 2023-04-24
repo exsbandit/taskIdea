@@ -29,29 +29,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b56af98-defa-4dd6-a397-24bdfd4fa351" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1a1f97b5-0165-4c6c-8313-4f7faf95fd43.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2cc88d70-a8a3-4ee3-8718-8737952bacb7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6e85bf01-9f01-4a7f-9233-b90d4afc1d8d.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a8e46221-aeec-4fc1-9b83-973cf03aa098.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a8e46221-aeec-4fc1-9b83-973cf03aa098/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/v1/Discount/DiscountRule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/taskIdea.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/taskIdea.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrderedProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrderedProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/v1/DiscountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/DiscountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/v1/Discount/Repositories/DiscountRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/v1/Discount/Repositories/DiscountRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/v1/Discount/Repositories/DiscountRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/v1/Discount/Repositories/DiscountRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2023_03_31_134849_create_ordered_product_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_03_31_134849_create_ordered_product_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/OrderedProductSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/OrderedProductSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2023_03_31_134838_create_discount_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_03_31_134838_create_discount_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DiscountSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DiscountSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +214,14 @@
       <updated>1680535056958</updated>
       <workItem from="1680535058094" duration="7872000" />
       <workItem from="1680562653931" duration="12127000" />
-      <workItem from="1680597071672" duration="7444000" />
+      <workItem from="1680597071672" duration="9234000" />
+      <workItem from="1680874156844" duration="2202000" />
+      <workItem from="1681055143789" duration="8000" />
+      <workItem from="1681139018589" duration="77000" />
+      <workItem from="1681158072762" duration="2420000" />
+      <workItem from="1681214870575" duration="19878000" />
+      <workItem from="1681741625496" duration="1627000" />
+      <workItem from="1682347367829" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1680537227165</created>
@@ -244,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680540147864</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Sail fix">
+      <created>1680622272413</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680622272413</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +277,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="File paths changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="File paths changed" />
+    <MESSAGE value="Sail fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sail fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="820" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1680622076486">
@@ -288,42 +289,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1680570568613" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1680563065404">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1681741963157">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1680563065404" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1681741963157" />
     <state width="271" height="457" key="HiddenNamespacesPopup" timestamp="1680620280649">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="271" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1680620280649" />
-    <state x="736" y="243" key="NewPhpClassDialog" timestamp="1680544671661">
+    <state x="736" y="243" key="NewPhpClassDialog" timestamp="1681159367075">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="736" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1680544671661" />
+    <state x="736" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681159367075" />
     <state x="721" y="240" key="RollbackChangesDialog" timestamp="1680571968604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="721" y="240" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1680571968604" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1680537243251">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1682347416153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1680537243251" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1682347416153" />
     <state x="786" y="311" width="316" height="244" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1680571822675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="786" y="311" width="316" height="244" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040@0.0.1920.1040" timestamp="1680571822675" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1680575075595">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1682347617166">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1680575075595" />
-    <state x="898" y="223" width="585" height="534" key="find.popup" timestamp="1680565434453">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1682347617166" />
+    <state x="898" y="223" width="884" height="701" key="find.popup" timestamp="1681225478273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="898" y="223" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1680565434453" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1680618598793">
+    <state x="898" y="223" width="884" height="701" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1681225478273" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1681249778738">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1680618598793" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1681249778738" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1680616971426">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

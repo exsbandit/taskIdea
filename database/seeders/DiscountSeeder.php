@@ -3,6 +3,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Discount;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,36 +17,97 @@ class DiscountSeeder extends Seeder
      */
     public function run()
     {
-        $discounts = array(
-            array(
-                'id' => '1',
-                'name' => 'BUY_5_GET_1',
-                'description' => 'Category 2 den alınan aynı 6 üründen 1 i ücretsiz',
-                'type' => 1,
-                'is_percentage' => false,
-                'discount' => 5,
-                'status' => 1,
-            ),
-            array(
-                'id' => '2',
-                'name' => '10_PERCENT_OVER_1000',
-                'description' => 'Toplamda yapılan 1000 ve üzeri alışverişlere %10 indirim',
-                'type' => 1,
-                'is_percentage' => false,
-                'discount' => 5,
-                'status' => 1,
-            ),
-            array(
-                'id' => '3',
-                'name' => 'MIN_2_LOW_PRODUCT_10',
-                'description' => 'Category 1 den alınan 2 ve üzeri alışverişlerde en ucuz ürüne %20 indirim',
-                'type' => 1,
-                'is_percentage' => false,
-                'discount' => 5,
-                'status' => 1,
-            ),
+        Discount::create(
+            [
+                "type" => "customer",
+                "selection" => "1",
+                "description" => "1 id li müşteriye alışverişlerinde %5 indirim",
+                "control_unit" => "none",
+                "discount_unit" => "percentage",
+                "rule" => "upper",
+                "input" => 5, // indirim miktarı
+                "status" => true,
+                "lastDate" => Carbon::now()->addDays(50)->toDateString(),
+                "remaining" => -1,
+            ]
         );
 
-        DB::table('discounts')->insert($discounts);
+        Discount::create(
+            [
+                "type" => "order",
+                "selection" => "1",
+                "description" => "500 tl üstü alışverişlere %10 indirim",
+                "control_unit" => "amount",
+                "discount_unit" => "percentage",
+                "rule" => "upper",
+                "input" => 10,
+                "case" => 500,
+                "status" => true,
+                "lastDate" => Carbon::now()->addDays(50)->toDateString(),
+                "remaining" => 50,
+            ]
+        );
+        Discount::create(
+            [
+                "type" => "customer",
+                "selection" => "2",
+                "description" => "2 id li customer a 2 idli category alışverişlerinde 100Tl indirim",
+                "controlTable" => "categories",
+                "controlColumn" => "id",
+                "control" => "2",
+                "control_unit" => "quantity",
+                "rule" => 'upper',
+                "case" => 0,
+                "discount_unit" => "amount",
+                "input" => 100,
+            ]
+        );
+        Discount::create(
+            [
+                "type" => "customer",
+                "selection" => "3",
+                "description" => "3 id li customer a 3 idli category alışverişlerinde 6 al 5 öde",
+                "control_unit" => "quantity",
+                "discount_unit" => "quantity",
+                "controlTable" => "categories",
+                "controlColumn" => "id",
+                "control" => "3",
+                "rule" => "upper",
+                "case" => 5,
+                "input" => 1,
+                "status" => true,
+                "lastDate" => Carbon::now()->addDays(50)->toDateString(),
+                "remaining" => 50,
+            ]
+        );
+
+        Discount::create(
+            [
+                "type" => "category",
+                "selection" => "1",
+                "description" => "1 idli category alışverişlerinde 2 al 1 öde",
+                "control_unit" => "quantity",
+                "discount_unit" => "quantity",
+                "rule" => "upper",
+                "case" => 1,
+                "input" => 1,
+            ]
+        );
+
+
+        Discount::create(
+            [
+                "type" => "product",
+                "selection" => "100",
+                "description" => "100 idli ürün alışverişlerinde 5 ve üzeri alışverişe en ucuza %20 indirim",
+                "control_unit" => "quantity",
+                "discount_unit" => "percentage",
+                "rule" => "upper",
+                "case" => 4,
+                "input" => 20,
+            ]
+        );
     }
 }
+
+

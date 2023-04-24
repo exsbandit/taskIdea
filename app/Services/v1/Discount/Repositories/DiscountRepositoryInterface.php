@@ -18,11 +18,11 @@ interface DiscountRepositoryInterface
 
     public function moreThanValue(Model $model, array $attributes): Model;
 
-    public function checkCartDiscount($attribute);
+    public function checkCartDiscount($discount, $order);
 
-    public function checkCustomerDiscount($attribute);
+    public function checkCustomerDiscount($discount, $order);
 
-    public function checkProductDiscount($attribute);
+    public function checkProductDiscount($discount, $order);
 
-    public function checkCategoryDiscount($attribute);
+    public function checkCategoryDiscount($discount, $order);
 }

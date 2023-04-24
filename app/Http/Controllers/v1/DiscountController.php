@@ -31,7 +31,6 @@ class DiscountController extends Controller
     }
     public function discountFinder(DiscountFinderRequest $request, Order $order): JsonResponse
     {
-        dd($order->products->sum('quantity'));
-        return Response::run($this->discounts->repository->discountFinder($request->validated()));
+        return Response::run($this->discounts->repository->discountFinder($order));
     }
 }
